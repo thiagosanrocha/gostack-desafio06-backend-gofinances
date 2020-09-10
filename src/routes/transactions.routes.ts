@@ -19,7 +19,10 @@ transactionsRouter.get('/', async (req, res) => {
 
   const balance = await transactionsRepository.getBalance();
 
-  return res.json({ transactions, balance });
+  return res.json({
+    transactions: transactions.reverse(),
+    balance,
+  });
 });
 
 transactionsRouter.post('/', async (req, res) => {
